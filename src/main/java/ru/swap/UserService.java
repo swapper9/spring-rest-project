@@ -1,3 +1,4 @@
+/*
 package ru.swap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,3 +78,4 @@ public class UserService implements UserDetailsService {
     userRepository.save(user);
   }
 }
+*/

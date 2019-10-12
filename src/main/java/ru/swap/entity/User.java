@@ -1,3 +1,4 @@
+/*
 package ru.swap.entity;
 
 import lombok.Data;
@@ -24,3 +25,4 @@ public class User {
   private boolean active;
 
 }
+*/

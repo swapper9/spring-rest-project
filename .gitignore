@@ -2,3 +2,5 @@
 .idea/
 
 spring-rest.iml
+
+target/
