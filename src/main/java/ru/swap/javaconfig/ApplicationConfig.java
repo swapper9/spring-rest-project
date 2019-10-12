@@ -78,7 +78,7 @@ public class ApplicationConfig {
   private DatabasePopulator getDatabasePopulator() {
     final ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
     populator.addScript(dbschemaSqlScript);
-    populator.addScript(testDataSqlScript);
+    //populator.addScript(testDataSqlScript);
     return populator;
   }
 
@@ -120,7 +120,7 @@ public class ApplicationConfig {
   @Bean(name = "entityManagerFactory")
   public LocalContainerEntityManagerFactoryBean getLocalContainerEntityManagerFactoryBean() {
     LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-    em.setPackagesToScan(new String[] {"ru.swap.entity"});
+    em.setPackagesToScan(new String[] {"ru.swap.bean"});
     em.setDataSource(getDriverManagerDataSource());
 
     HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
@@ -129,7 +129,7 @@ public class ApplicationConfig {
     em.setJpaVendorAdapter(vendorAdapter);
 
     Properties jpaProperties = new Properties();
-    jpaProperties.put("hibernate.dialect","org.hibernate.dialect.PostgreSQL95Dialect");
+    jpaProperties.put("hibernate.dialect","org.hibernate.dialect.PostgreSQL9Dialect");
     jpaProperties.put("hibernate.show_sql",true);
     jpaProperties.put("hibernate.format_sql","false");
     jpaProperties.put("hibernate.hbm2ddl.auto","update");

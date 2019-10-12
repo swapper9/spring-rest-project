@@ -18,9 +18,6 @@ import java.util.List;
 
 //import javax.annotation.PostConstruct;
 
-/**
- * Created for JavaStudy.ru on 24.02.2016.
- */
 @Repository
 public class JDBCExample {
 
@@ -41,7 +38,7 @@ public class JDBCExample {
         jdbcTemplate.update(new PreparedStatementCreator() {
             public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
                 PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SQL);
-                preparedStatement.setString(1, log.getLOGSTRING());
+                preparedStatement.setString(1, log.getLogstring());
                 return preparedStatement;
             }
         });
@@ -51,13 +48,13 @@ public class JDBCExample {
     //JDBC TEMPLATE SELECT EXAMPLE
     public List<DBLog> queryAllLogs() {
         System.out.println("JDBCExample: queryAllLogs() is called");
-        final String QUERY_SQL = "SELECT * FROM LOG ORDER BY IDLOG";
+        final String QUERY_SQL = "SELECT * FROM log ORDER BY id";
         List<DBLog> dbLogList = this.jdbcTemplate.query(QUERY_SQL, new RowMapper<DBLog>() {
             public DBLog mapRow(ResultSet resulSet, int rowNum) throws SQLException {
-                System.out.println("Getting log: "+ rowNum + " content: " + resulSet.getString("LOGSTRING"));
+                System.out.println("Getting log: "+ rowNum + " content: " + resulSet.getString("logstring"));
                 DBLog dbLog = new DBLog();
-                dbLog.setIDLOG(resulSet.getInt("IDLOG"));
-                dbLog.setLOGSTRING(resulSet.getString("LOGSTRING"));
+                dbLog.setId(resulSet.getInt("id"));
+                dbLog.setLogstring(resulSet.getString("logstring"));
                 return dbLog;
             }
         });
@@ -66,14 +63,14 @@ public class JDBCExample {
 
     public List<User> queryAllUsers() {
         System.out.println("JDBCExample: queryAllUsers is called");
-        final String QUERY_SQL = "SELECT * FROM USER ORDER BY IDUSER";
+        final String QUERY_SQL = "SELECT * FROM users ORDER BY id";
         List<User> userList = this.jdbcTemplate.query(QUERY_SQL, new RowMapper<User>() {
             public User mapRow(ResultSet resulSet, int rowNum) throws SQLException {
                 User user = new User();
-                user.setIdUser(resulSet.getInt("IDUSER"));
-                user.setUsername(resulSet.getString("USERNAME"));
-                user.setPassword(resulSet.getString("PASSWORD"));
-                user.setEnabled(resulSet.getBoolean("ENABLED"));
+                user.setId(resulSet.getLong("id"));
+                user.setUsername(resulSet.getString("username"));
+                user.setPassword(resulSet.getString("password"));
+                user.setEnabled(resulSet.getBoolean("enabled"));
                 return user;
             }
         });
@@ -81,13 +78,13 @@ public class JDBCExample {
     }
 
     //JDBC TEMPLATE DELETE EXAMPLE
-    public boolean deleteUSER(int iduser) {
+    public boolean deleteUSER(Long id) {
         System.out.println("JDBCExample: deleteUSER called");
-        final String DELETE_SQL = "DELETE FROM USER WHERE IDUSER LIKE ?";
-        int result = jdbcTemplate.update(DELETE_SQL,new Object[]{iduser});
+        final String DELETE_SQL = "DELETE FROM users WHERE id LIKE ?";
+        int result = jdbcTemplate.update(DELETE_SQL,new Object[]{id});
         System.out.println("r" + result);
         if (result > 0) {
-            System.out.println("User is deleted: " + iduser);
+            System.out.println("User is deleted: " + id);
             return true;
         } else {
             return false;
@@ -97,7 +94,7 @@ public class JDBCExample {
     //JDBC TEMPLATE UPDATE EXAMPLE
     public boolean updateUserEnable(User u, boolean enable)  {
         System.out.println("JDBCExample: updateUserEnable called");
-        final String UPDATE_SQL = "UPDATE USER SET ENABLED = ? WHERE USERNAME = ?";
+        final String UPDATE_SQL = "UPDATE users SET ENABLED = ? WHERE username = ?";
         int result = jdbcTemplate.update(UPDATE_SQL,new Object[]{enable, u.getUsername()});
         if (result > 0) {
             System.out.println("User is updated: " + u.getUsername());

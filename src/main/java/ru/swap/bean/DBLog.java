@@ -5,30 +5,30 @@ import java.io.Serializable;
 public class DBLog implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private int IDLOG;
-    private String LOGSTRING;
+    private int id;
+    private String logstring;
 
     public DBLog() {
     }
 
     public DBLog (int idLog, String logString) {
-        this.IDLOG = idLog;
-        this.LOGSTRING = logString;
+        this.id = idLog;
+        this.logstring = logString;
     }
 
-    public int getIDLOG() {
-        return IDLOG;
+    public int getId() {
+        return id;
     }
 
-    public void setIDLOG(int iDLOG) {
-        IDLOG = iDLOG;
+    public void setId(int iDLOG) {
+        id = iDLOG;
     }
 
-    public String getLOGSTRING() {
-        return LOGSTRING;
+    public String getLogstring() {
+        return logstring;
     }
 
-    public void setLOGSTRING(String lOGSTRING) {
-        LOGSTRING = lOGSTRING;
+    public void setLogstring(String lOGSTRING) {
+        logstring = lOGSTRING;
     }
 }

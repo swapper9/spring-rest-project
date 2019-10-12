@@ -21,12 +21,12 @@ public class DBLogService {
     private EntityManager entityManager;
 
     /* or you can use JDBCTemplate instead JPA */
-    private JdbcTemplate jdbcTemplate;
+    //private JdbcTemplate jdbcTemplate;
     /* if use JDBCTemplate */
-    @Autowired
+    /*@Autowired
     public DBLogService (DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
-    }
+    }*/
 
     //JPA XML example
     public List<DBLogXML> queryAllDBLogsXML() {
@@ -43,15 +43,15 @@ public class DBLogService {
     }
 
     //JdbcTemplate query with in method RowMapper example (XML)
-    public List<DBLogXML> queryAllDBLogsJDBCExampleXML() {
+    /*public List<DBLogXML> queryAllDBLogsJDBCExampleXML() {
         System.out.println("DBLogService queryAllDBLogsJDBCExampleXML() is called");
         final String querySQL = "SELECT * FROM LOG";
         List<DBLogXML> dbLogs = jdbcTemplate.query(querySQL, new RowMapper<DBLogXML>() {
             @Override
             public DBLogXML mapRow(ResultSet resultSet, int rowNum) throws SQLException {
                 DBLogXML dbLog = new DBLogXML();
-                dbLog.setIDLOG(resultSet.getInt("IDLOG"));
-                dbLog.setLOGSTRING(resultSet.getString("LOGSTRING"));
+                dbLog.setId(resultSet.getInt("IDLOG"));
+                dbLog.setLogstring(resultSet.getString("LOGSTRING"));
                 return dbLog;
             }
         });
@@ -66,12 +66,12 @@ public class DBLogService {
             @Override
             public DBLogJSON mapRow(ResultSet resultSet, int rowNum) throws SQLException {
                 DBLogJSON dbLog = new DBLogJSON();
-                dbLog.setIDLOG(resultSet.getInt("IDLOG"));
-                dbLog.setLOGSTRING(resultSet.getString("LOGSTRING"));
+                dbLog.setId(resultSet.getInt("IDLOG"));
+                dbLog.setLogstring(resultSet.getString("LOGSTRING"));
                 return dbLog;
             }
         });
         return dbLogs;
-    }
+    }*/
 
 }

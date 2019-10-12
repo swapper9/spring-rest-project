@@ -28,7 +28,7 @@ public class JDBCController {
     public ModelAndView jdbcInsert(@PathVariable(value="logstring") String logstring) {
         System.out.println("JDBCController jdbcInsert is called");
         DBLog dblog = new DBLog();
-        dblog.setLOGSTRING(logstring);
+        dblog.setLogstring(logstring);
         boolean result = jdbcExample.insertLog(dblog);
         return new ModelAndView("/jdbc/jdbc", "resultObject", result);
     }
@@ -42,9 +42,9 @@ public class JDBCController {
     }
 
     @RequestMapping(value = "/jdbcDelete/user/{iduser}", method= RequestMethod.GET)
-    public ModelAndView jdbcDelete(@PathVariable(value="iduser") int iduser) {
+    public ModelAndView jdbcDelete(@PathVariable(value="id") Long id) {
         System.out.println("JDBCController jdbcDelete is called");
-        boolean result = jdbcExample.deleteUSER(iduser);
+        boolean result = jdbcExample.deleteUSER(id);
         return new ModelAndView("/jdbc/jdbc", "resultObject", result);
 
     }

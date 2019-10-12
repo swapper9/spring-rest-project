@@ -6,33 +6,33 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IDUSER")
-    private int idUser;
+    @Column(name = "id")
+    private Long id;
 
     @NotEmpty
     @Size(min = 5, max = 20)
-    @Column(name = "USERNAME")
+    @Column(name = "username")
     private String username;
 
     @NotEmpty
     @Size(min=5, max=20)
-    @Column(name="PASSWORD")
+    @Column(name="password")
     private String password;
 
-    @Column(name="ENABLED")
+    @Column(name="enabled")
     private boolean enabled;
 
-    public int getIdUser() {
-        return idUser;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -62,7 +62,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "idUser=" + idUser +
+                "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", enabled=" + enabled +

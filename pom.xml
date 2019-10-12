@@ -10,11 +10,11 @@
     <packaging>war</packaging>
 
     <properties>
-        <spring.version>5.2.0.RELEASE</spring.version>
+        <spring.version>5.0.8.RELEASE</spring.version>
         <!-- Spring -->
-        <spring-framework.version>5.2.0.RELEASE</spring-framework.version>
+        <spring-framework.version>5.0.8.RELEASE</spring-framework.version>
         <!-- Spring Security -->
-        <spring-security.version>5.2.0.RELEASE</spring-security.version>
+        <spring-security.version>5.0.8.RELEASE</spring-security.version>
         <!--Java standard tag library-->
         <jstl.version>1.2</jstl.version>
         <servlet.version>3.1.0</servlet.version>
@@ -71,16 +71,16 @@
             <artifactId>spring-data-jpa</artifactId>
             <version>2.2.0.RELEASE</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-rest-core</artifactId>
             <version>3.2.0.RELEASE</version>
-        </dependency>
-        <dependency>
+        </dependency>-->
+        <!--<dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-rest-webmvc</artifactId>
             <version>3.2.0.RELEASE</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
