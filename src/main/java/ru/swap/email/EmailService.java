@@ -13,9 +13,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created for JavaStudy.ru on 28.02.2016.
- */
 @Service
 public class EmailService {
 

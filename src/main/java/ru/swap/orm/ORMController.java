@@ -23,25 +23,25 @@ public class ORMController {
         return new ModelAndView("/orm/orm", "resultObject", users);
     }
 
-    @RequestMapping(value = "/queryFindByIdUser/{userid}", method = RequestMethod.GET)
-    public ModelAndView queryFindByIdUser(@PathVariable("userid") int userid) {
+    @RequestMapping(value = "/queryFindByIdUser/{id}", method = RequestMethod.GET)
+    public ModelAndView queryFindByIdUser(@PathVariable("id") int id) {
         System.out.println("ORMController queryFindByIdUser is called");
-        User user = ormService.queryFindUserById(userid);
+        User user = ormService.queryFindUserById(id);
         return new ModelAndView("/orm/orm", "resultObject", user);
     }
 
-    @RequestMapping(value = "/ormUpdateUser/iduser/{iduser}/enabled/{enabled}", method= RequestMethod.GET)
+    @RequestMapping(value = "/ormUpdateUser/iduser/{id}/enabled/{enabled}", method= RequestMethod.GET)
     public ModelAndView ormUpdateUser(
-            @PathVariable(value="iduser") int iduser,
+            @PathVariable(value="id") int id,
             @PathVariable(value="enabled") boolean enabled) {
         System.out.println("ORMController ormUpdateUser is called");
-        boolean result = ormService.updateUser(iduser, enabled);
+        boolean result = ormService.updateUser(id, enabled);
         return new ModelAndView("/orm/orm", "resultObject", result);
     }
-    @RequestMapping(value = "/ormDeleteUser/iduser/{iduser}", method= RequestMethod.GET)
-    public ModelAndView ormDeleteUser(@PathVariable(value="iduser") int iduser) {
+    @RequestMapping(value = "/ormDeleteUser/iduser/{id}", method= RequestMethod.GET)
+    public ModelAndView ormDeleteUser(@PathVariable(value= "id") int id) {
         System.out.println("ORMController jdbcDelete is called");
-        boolean result = ormService.deleteUser(iduser);
+        boolean result = ormService.deleteUser(id);
         return new ModelAndView("/orm/orm", "resultObject", result);
     }
 

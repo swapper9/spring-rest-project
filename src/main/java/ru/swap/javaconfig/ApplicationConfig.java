@@ -20,6 +20,8 @@ import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
 import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.scheduling.quartz.SimpleTriggerFactoryBean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.velocity.VelocityEngineFactoryBean;
 import org.springframework.web.client.RestTemplate;
 import ru.swap.quartz.CronQuartzTask;
@@ -56,6 +58,11 @@ public class ApplicationConfig {
 
   @Value("classpath:test-data.sql")
   private Resource testDataSqlScript;
+
+  @Bean
+  public PasswordEncoder getPasswordEncoder() {
+    return new BCryptPasswordEncoder(12);
+  }
 
   @Bean(name = "dataSource")
   public DriverManagerDataSource getDriverManagerDataSource() {

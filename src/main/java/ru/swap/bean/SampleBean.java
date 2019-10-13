@@ -1,9 +1,11 @@
 package ru.swap.bean;
 
+import lombok.Data;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
+@Data
 @Component(value = "sampleBean")
 public class SampleBean {
 
@@ -19,19 +21,4 @@ public class SampleBean {
         number = 666;
     }
 
-    public String getStringValue() {
-        return stringValue;
-    }
-
-    public void setStringValue(String stringValue) {
-        this.stringValue = stringValue;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
 }

@@ -19,7 +19,7 @@ public class ORMService {
 
     public List<User> queryFindAllUsersJPA() {
         System.out.println("ORMService queryfindAllUsersJPA is called");
-        String query = "from User order by iduser";
+        String query = "from User order by id";
         TypedQuery<User> typedQuery = entityManager.createQuery(query, User.class);
         return typedQuery.getResultList();
     }
@@ -32,7 +32,7 @@ public class ORMService {
     public boolean updateUser(int id, boolean enabled) {
         System.out.println("ORMService updateUser is called");
 
-        String query= "update user set enabled = ? where iduser = ?";
+        String query= "update users set enabled = ? where id = ?";
         Query nativeQuery = entityManager.createNativeQuery(query);
         nativeQuery.setParameter(1, enabled);
         nativeQuery.setParameter(2, id);
@@ -43,7 +43,7 @@ public class ORMService {
     public boolean insertUser(String username, String password, boolean enabled) {
         System.out.println("ORMExample insertUser is called");
 
-        String qlString = "insert into user (username,password,enabled) values (?,?,?)";
+        String qlString = "insert into users (username,password,enabled) values (?,?,?)";
         Query query = entityManager.createNativeQuery(qlString);
         query.setParameter(1, username);
         query.setParameter(2, password);
@@ -53,12 +53,12 @@ public class ORMService {
         return result > 0;
     }
 
-    public boolean deleteUser(int idUser) {
+    public boolean deleteUser(int id) {
         System.out.println("ORMExample deleteUser is called");
 
-        String qlString = "delete from user where iduser=?";
+        String qlString = "delete from users where id = ?";
         Query query = entityManager.createNativeQuery(qlString);
-        query.setParameter(1, idUser);
+        query.setParameter(1, id);
         int result = query.executeUpdate();
 
         return result > 0;
