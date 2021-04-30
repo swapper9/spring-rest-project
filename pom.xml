@@ -12,7 +12,7 @@
     <properties>
         <spring.version>5.2.3.RELEASE</spring.version>
         <!-- Spring -->
-        <spring-framework.version>5.0.8.RELEASE</spring-framework.version>
+        <spring-framework.version>5.0.19.RELEASE</spring-framework.version>
         <!-- Spring Security -->
         <spring-security.version>5.0.8.RELEASE</spring-security.version>
         <!--Java standard tag library-->
